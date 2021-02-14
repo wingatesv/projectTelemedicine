@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.project.mytelevet">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.MyTeleVet">
+        <activity android:name=".doctor.RegisterVetProfile"></activity>
+        <activity android:name=".customer.AppointmentInfoActivity" />
+        <activity android:name=".customer.ViewAppointmentActivity" />
+        <activity android:name=".customer.VetInfoActivity" />
+        <activity android:name=".customer.FindVetActivity" />
+        <activity android:name=".customer.ViewMyPetInfoActivity" />
+        <activity android:name=".customer.ViewMyPetActivity" />
+        <activity android:name=".customer.ViewMyProfileActivity" />
+        <activity android:name=".customer.PetDetailsActivity" />
+        <activity android:name=".customer.PetInfoActivity" />
+        <activity android:name=".customer.MyProfileActivity" />
+        <activity android:name=".common.LoginActivity" />
+        <activity android:name=".customer.MainActivity" />
+        <activity
+            android:name=".common.RegisterActivity"
+            android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>
