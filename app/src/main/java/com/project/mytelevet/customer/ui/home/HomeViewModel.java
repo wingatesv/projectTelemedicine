@@ -71,12 +71,12 @@ public class HomeViewModel extends ViewModel {
     }
 
 
-
     private void addData()
     {
         List<String> list = new ArrayList<>();
         list.add("Find a Veterinarian");
         list.add("Upcoming Appointment");
+
 
 
 
