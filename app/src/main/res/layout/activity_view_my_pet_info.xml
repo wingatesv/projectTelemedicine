@@ -4,207 +4,323 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".customer.ViewMyPetInfoActivity">
+    tools:context=".customer.ViewMyPetInfoActivity"
+    android:background="@drawable/gradient_background">
 
     <TextView
         android:id="@+id/lbl_myPetInfo"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="56dp"
-        android:fontFamily="sans-serif-black"
-        android:text="My Pet Infomation"
+        android:layout_marginTop="30dp"
+        android:fontFamily="sans-serif"
+        android:gravity="center"
+        android:letterSpacing="0.15"
         android:textSize="24sp"
+        android:textStyle="bold"
+        android:textColor="#FFFFFF"
+        android:text="Edit Pet Information"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.471"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/tf_ViewPetName"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
-        android:ems="10"
-        android:hint="Pet Name"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lbl_myPetInfo" />
-
-    <EditText
-        android:id="@+id/tf_ViewBreed"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:ems="10"
-        android:hint="Breed"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rg_ViewPetType" />
-
-    <EditText
-        android:id="@+id/tf_ViewDOB"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:ems="10"
-        android:hint="DOB"
-        android:inputType="date"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tf_ViewBreed" />
-
-    <Button
-        android:id="@+id/btn_ViewMyPetUpdate"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="Update"
+        android:gravity="center"
+        android:background="@drawable/semiborder"
+        android:orientation="vertical"
+        android:padding="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <RadioGroup
-        android:id="@+id/rg_ViewGender"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tf_ViewDOB">
+        tools:layout_editor_absoluteX="0dp">
 
         <TextView
-            android:id="@+id/lbl_ViewGender"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Gender :"
-            android:textSize="18sp" />
-
-        <RadioButton
-            android:id="@+id/rb_ViewMale"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="checkGender"
-            android:text="Male" />
-
-        <RadioButton
-            android:id="@+id/rb_ViewFemale"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:onClick="checkGender"
-            android:text="Female" />
-
-    </RadioGroup>
-
-    <RadioGroup
-        android:id="@+id/rg_ViewPetType"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tf_ViewPetName">
-
-        <TextView
-            android:id="@+id/lbl_ViewPetType"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Pet Type :"
-            android:textSize="18sp" />
+            android:layout_marginLeft="18dp"
+            android:layout_marginTop="40dp"
+            android:fontFamily="sans-serif"
+            android:letterSpacing="0.1"
+            android:text="Pet Name"
+            android:textColor="#707c80"
+            android:textSize="14sp">
+        </TextView>
 
-        <RadioButton
-            android:id="@+id/rb_ViewDog"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="checkPetType"
-            android:text="Dog" />
-
-        <RadioButton
-            android:id="@+id/rb_ViewCat"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="checkPetType"
-            android:text="Cat" />
-    </RadioGroup>
-
-    <RadioGroup
-        android:id="@+id/rg_ViewSize"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rg_ViewGender">
-
-        <TextView
-            android:id="@+id/lbl_ViewSize"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Size :"
-            android:textSize="18sp" />
-
-        <RadioButton
-            android:id="@+id/rb_ViewSmall"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:onClick="checkSize"
-            android:text="S" />
-
-        <RadioButton
-            android:id="@+id/rb_ViewMedium"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:onClick="checkSize"
-            android:text="M" />
-
-        <RadioButton
-            android:id="@+id/rb_ViewLarge"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:onClick="checkSize"
-            android:text="L" />
-    </RadioGroup>
-
-    <RadioGroup
-        android:id="@+id/rg_ViewCondition"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rg_ViewSize">
-
-        <TextView
-            android:id="@+id/lbl_ViewCondition"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Neutered :"
-            android:textSize="18sp" />
-
-        <RadioButton
-            android:id="@+id/rb_ViewYes"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="checkCondition"
-            android:text="Yes" />
-
-        <RadioButton
-            android:id="@+id/rb_ViewNo"
+        <EditText
+            android:id="@+id/tf_ViewPetName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:onClick="checkCondition"
-            android:text="No" />
-    </RadioGroup>
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:letterSpacing="0.05"
+            android:hint="Example:Nana"
+            android:textColor="#031163"
+            android:inputType="textPersonName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/lbl_myPetInfo" />
+
+        <RadioGroup
+            android:id="@+id/rg_ViewPetType"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tf_ViewPetName">
+
+            <TextView
+                android:id="@+id/lbl_ViewPetType"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pet Type :"
+                android:layout_weight="1"
+                android:letterSpacing="0.1"
+                android:textColor="#031163"
+                android:textSize="17sp"
+                 />
+
+            <RadioButton
+                android:id="@+id/rb_ViewDog"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="checkPetType"
+                android:text="Dog "
+                android:textColor="#707c80"
+                android:textSize="17sp"/>
+
+            <RadioButton
+                android:id="@+id/rb_ViewCat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="checkPetType"
+                android:text="Cat "
+                android:textColor="#707c80"
+                android:textSize="17sp"/>
+        </RadioGroup>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="18dp"
+            android:layout_marginTop="12dp"
+            android:fontFamily="sans-serif"
+            android:letterSpacing="0.1"
+            android:text="Date of Birth"
+            android:textColor="#707c80"
+            android:textSize="14sp">
+        </TextView>
+
+        <EditText
+            android:id="@+id/tf_ViewDOB"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:letterSpacing="0.05"
+            android:textColor="#031163"
+            android:hint="DD/MM/YY"
+            android:inputType="date"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tf_ViewBreed" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="18dp"
+            android:layout_marginTop="12dp"
+            android:fontFamily="sans-serif"
+            android:letterSpacing="0.1"
+            android:text="Type of Breed"
+            android:textColor="#707c80"
+            android:textSize="14sp">
+        </TextView>
+
+        <EditText
+            android:id="@+id/tf_ViewBreed"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:letterSpacing="0.05"
+            android:hint="Example:Toy Terrier"
+            android:textColor="#031163"
+            android:inputType="textPersonName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rg_ViewPetType" />
+
+        <RadioGroup
+            android:id="@+id/rg_ViewSize"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginRight="30dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rg_ViewGender">
+
+            <TextView
+                android:id="@+id/lbl_ViewSize"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:letterSpacing="0.1"
+                android:text="Size :"
+                android:textColor="#031163"
+                android:textSize="17sp" />
+
+            <RadioButton
+                android:id="@+id/rb_ViewSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="checkSize"
+                android:text="S"
+                android:textColor="#707c80"
+                android:textSize="17sp"/>
+
+            <RadioButton
+                android:id="@+id/rb_ViewMedium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="checkSize"
+                android:text="M"
+                android:textColor="#707c80"
+                android:textSize="17sp"/>
+
+            <RadioButton
+                android:id="@+id/rb_ViewLarge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="checkSize"
+                android:text="L"
+                android:textColor="#707c80"
+                android:textSize="17sp"/>
+        </RadioGroup>
+
+
+        <RadioGroup
+            android:id="@+id/rg_ViewGender"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tf_ViewDOB">
+
+            <TextView
+                android:id="@+id/lbl_ViewGender"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:letterSpacing="0.1"
+                android:textColor="#031163"
+                android:textSize="17sp"
+                android:text="Gender :" />
+
+            <RadioButton
+                android:id="@+id/rb_ViewMale"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="checkGender"
+                android:text="Male"
+                android:textColor="#707c80"
+                android:textSize="17sp"/>
+
+            <RadioButton
+                android:id="@+id/rb_ViewFemale"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="checkGender"
+                android:text="Female"
+                android:textColor="#707c80"
+                android:textSize="17sp"/>
+
+        </RadioGroup>
+
+        <RadioGroup
+            android:id="@+id/rg_ViewCondition"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rg_ViewSize">
+
+            <TextView
+                android:id="@+id/lbl_ViewCondition"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Neutered :"
+                android:layout_weight="1"
+                android:letterSpacing="0.1"
+                android:textColor="#031163"
+                android:textSize="17sp"/>
+
+            <RadioButton
+                android:id="@+id/rb_ViewYes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="checkCondition"
+                android:text="Yes "
+                android:textColor="#707c80"
+                android:textSize="17sp" />
+
+            <RadioButton
+                android:id="@+id/rb_ViewNo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="checkCondition"
+                android:text="No "
+                android:textColor="#707c80"
+                android:textSize="17sp" />
+        </RadioGroup>
+
+        <Button
+            android:id="@+id/btn_ViewMyPetUpdate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginBottom="30dp"
+            android:background="@drawable/solid_border"
+            android:letterSpacing="0.1"
+            android:text="Update"
+            android:textSize="17dp"
+            app:backgroundTint="#1fbfb8"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.494"
+            app:layout_constraintStart_toStartOf="parent" />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lbl_myPetInfo"
+        app:srcCompat="@drawable/logo" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
