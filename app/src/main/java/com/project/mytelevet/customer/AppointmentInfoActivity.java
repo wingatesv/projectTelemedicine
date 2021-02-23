@@ -53,7 +53,7 @@ public class AppointmentInfoActivity extends AppCompatActivity {
                 appItem = item;
 
                 lbl_vetName.setText("Attending Vet : Dr." + appItem.get("VetName").toString() );
-                lbl_time.setText("Appointment Time : " + appItem.get("AppointmentTime").toString());
+                lbl_time.setText(appItem.get("AppointmentTime").toString());
                 lbl_petName.setText("Pet Name : " + appItem.get("PetName").toString());
                 lbl_reason.setText("Appointment Reason : " + appItem.get("Details").toString());
                 lbl_status.setText("Status : " + appItem.get("Status").toString());
