@@ -135,4 +135,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tf_loginPassword" />
 
+    <TextView
+        android:id="@+id/lbl_vetSignIn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="11dp"
+        android:onClick="vetSignIn"
+        android:text="Sign In as Vet"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_gotoRegister" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

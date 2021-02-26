@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".customer.ViewMyProfileActivity">
+    tools:context=".doctor.ViewVetProfileActivity">
 
     <ProgressBar
-        android:id="@+id/ViewMyProfile_progressBar"
+        android:id="@+id/VetProfile_progressBar"
         style="?android:attr/progressBarStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -34,7 +34,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:fontFamily="sans-serif-black"
-        android:text="My Profile"
+        android:text="Vet Profile"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -82,8 +82,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:ems="10"
-        android:hint="State"
-        android:inputType="textPersonName"
+        android:hint="Availability"
+        android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tf_ViewVetPhoneNumber" />
@@ -107,5 +107,17 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView_vetProfilePic" />
+
+    <EditText
+        android:id="@+id/tf_ViewVetDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:ems="10"
+        android:hint="Description"
+        android:inputType="textLongMessage|text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tf_ViewVetAvailability" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

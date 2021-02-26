@@ -1,8 +1,11 @@
 package com.project.mytelevet.customer;
 
 import android.os.Bundle;
+import android.view.KeyEvent;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.project.mytelevet.R;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,6 +15,10 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 public class MainActivity extends AppCompatActivity {
+
+    FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +33,14 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(navView, navController);
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK ) {
+            firebaseAuth.signOut();
+        }
+        return super.onKeyDown(keyCode, event);
     }
 
 }

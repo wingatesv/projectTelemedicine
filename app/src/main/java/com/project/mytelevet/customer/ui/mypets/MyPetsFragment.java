@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -33,7 +34,11 @@ public class MyPetsFragment extends Fragment {
         myPetsViewModel =
                 new ViewModelProvider(this, new ViewModelProvider.NewInstanceFactory()).get(MyPetsViewModel.class);
         View root = inflater.inflate(R.layout.fragment_mypets, container, false);
-        //final TextView textView = root.findViewById(R.id.text_dashboard);
+
+        ListView listView = root.findViewById(R.id.list_myPets);
+
+
+
         ProgressBar progressBar = root.findViewById(R.id.progressbar);
         progressBar.setVisibility(View.VISIBLE);
 
@@ -47,7 +52,7 @@ public class MyPetsFragment extends Fragment {
                 adapter.clear();
                 adapter.addAll(myPetsItems);
 
-                ListView listView = root.findViewById(R.id.list_myPets);
+
                 listView.setAdapter(adapter);
 
                 progressBar.setVisibility(View.GONE);
@@ -71,6 +76,11 @@ public class MyPetsFragment extends Fragment {
 
             }
         });
+
+       if (adapter.getCount() == 0)
+       {
+           progressBar.setVisibility(View.GONE);
+       }
 
 
 

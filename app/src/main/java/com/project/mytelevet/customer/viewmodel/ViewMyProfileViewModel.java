@@ -2,12 +2,16 @@ package com.project.mytelevet.customer.viewmodel;
 
 import android.util.Log;
 
+import androidx.annotation.NonNull;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModel;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.SetOptions;
 import com.project.mytelevet.customer.livedata.ViewMyProfileLiveData;
 import com.project.mytelevet.customer.repository.ViewMyProfileRepository;
 
@@ -53,10 +57,28 @@ public class ViewMyProfileViewModel extends ViewModel {
             update.put("FullName", update_firstName + " " + update_lastName);
 
 
-            documentReference.update(update).addOnSuccessListener(aVoid ->
-                    Log.i("tag", userID + " Profile is updated")
+            documentReference.update(update).addOnSuccessListener(aVoid -> {
+                Log.i("tag", userID + " Profile is updated");
 
-            ).addOnFailureListener(e ->
+                DocumentReference documentReference1 = firebaseFirestore.collection("users").document("userList");
+                Map<String, Object> userList = new HashMap<>();
+
+                userList.put(userID, update_firstName + " " + update_lastName);
+
+
+                documentReference1.set(userList, SetOptions.merge()).addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Log.i("tag", userID + " user list is updated");
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.e("tag", userID + " user List is not updated." + e.getMessage());
+                    }
+                });
+
+            }).addOnFailureListener(e ->
                     Log.e("tag", userID + " Profile is not updated." + e.getMessage())
             );
             state = true;

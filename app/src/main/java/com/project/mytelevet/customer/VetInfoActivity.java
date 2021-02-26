@@ -115,7 +115,7 @@ public class VetInfoActivity extends AppCompatActivity implements AdapterView.On
         vetInfoViewModel.getVetInfoItem().observe(this, item -> {
 
            lbl_vetName = findViewById(R.id.lbl_vetFullName);
-           lbl_description = findViewById(R.id.lbl_vetDesciption);
+           lbl_description = findViewById(R.id.lbl_vetDescription);
            vetPic = findViewById(R.id.vetInfo_profilePic);
            progressBar = findViewById(R.id.vetInfo_progressBar);
            lbl_available = findViewById(R.id.lbl_vetAvailability);
@@ -126,6 +126,7 @@ public class VetInfoActivity extends AppCompatActivity implements AdapterView.On
 
             lbl_vetName.setText("Dr. " + vetItem.get("FullName").toString());
             lbl_description.setText(vetItem.get("Description").toString());
+            Log.i("tag",lbl_description.getText().toString());
             lbl_available.setText(vetItem.get("Availability").toString());
 
             if (vetItem.containsKey("VetID") && !vetItem.get("VetID").toString().isEmpty()) {
@@ -138,7 +139,7 @@ public class VetInfoActivity extends AppCompatActivity implements AdapterView.On
 
             if (!vetID.isEmpty())
             {
-                StorageReference petPicRef = storageReference.child("users/" + vetID + "/profilePic.jpg");
+                StorageReference petPicRef = storageReference.child("doctors/" + vetID + "/profilePic.jpg");
 
                 petPicRef.getDownloadUrl().addOnSuccessListener(uri -> {
                     Picasso.get().load(uri).into(vetPic);
@@ -158,7 +159,7 @@ public class VetInfoActivity extends AppCompatActivity implements AdapterView.On
             else
             {
                 //progressBar.setVisibility(View.INVISIBLE);
-                Log.i("tag", "Pet ID is missing in Pet Details");
+                Log.i("tag", "Vet ID is missing in  Details");
             }
 
 
@@ -167,12 +168,14 @@ public class VetInfoActivity extends AppCompatActivity implements AdapterView.On
 
         myPetsViewModel = new ViewModelProvider(this, new ViewModelProvider.NewInstanceFactory()).get(MyPetsViewModel.class);
 
-        viewMyPetViewModel = new ViewModelProvider(this, new ViewModelProvider.NewInstanceFactory()).get(ViewMyPetViewModel.class);
+        //viewMyPetViewModel = new ViewModelProvider(this, new ViewModelProvider.NewInstanceFactory()).get(ViewMyPetViewModel.class);
 
         viewMyProfileModel = new ViewModelProvider(this, new ViewModelProvider.NewInstanceFactory()).get(ViewMyProfileViewModel.class);
 
 
-        ArrayList<MyPetsItem> arrayOfItems = new ArrayList<>();
+
+
+            ArrayList<MyPetsItem> arrayOfItems = new ArrayList<>();
         MyPetsAdapter adapter = new MyPetsAdapter(this, arrayOfItems);
 
 
@@ -248,7 +251,7 @@ public class VetInfoActivity extends AppCompatActivity implements AdapterView.On
                             return;
                         }
 
-                        Log.i("tag", "Nigga pls "  + petName + customerID+ customerName + currentDate);
+                        Log.i("tag", "pls "  + petName + customerID+ customerName + currentDate);
 
                        DocumentReference documentReference = firebaseFirestore.collection("appointments").document();
 
@@ -262,6 +265,8 @@ public class VetInfoActivity extends AppCompatActivity implements AdapterView.On
                        booking.put("AppointmentTime", time);
                        booking.put("VetName", vetName);
                        booking.put("VetID", vetID);
+                       //booking.put("PetID", )
+                       booking.put("AppID", documentReference.getId());
 
                        documentReference.set(booking).addOnSuccessListener(new OnSuccessListener<Void>() {
                            @Override
@@ -277,13 +282,29 @@ public class VetInfoActivity extends AppCompatActivity implements AdapterView.On
                                    public void onSuccess(Void aVoid) {
 
 
-                                       Toast.makeText(getApplicationContext(), "Booking success", Toast.LENGTH_SHORT).show();
+                                       DocumentReference documentReference2 = firebaseFirestore.collection("doctors").document(vetID).collection("appointment").document("appointmentList");
+                                       Map<Object, String> receiptVet = new HashMap<>();
+                                       receiptVet.put(currentDate + "_" + time, customerName + " at " + time);
+                                       documentReference2.set(receiptVet, SetOptions.merge()).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                           @Override
+                                           public void onSuccess(Void aVoid) {
+                                               Log.i("tag", " Vet appointment List is added ");
 
-                                       Intent intentMain = new Intent(VetInfoActivity.this, ViewAppointmentActivity.class);
-                                       startActivity(intentMain);
+                                               Toast.makeText(getApplicationContext(), "Booking success", Toast.LENGTH_SHORT).show();
 
-                                       finish();
+                                               Intent intentMain = new Intent(VetInfoActivity.this, ViewAppointmentActivity.class);
+                                               startActivity(intentMain);
 
+                                               finish();
+
+
+                                           }
+                                       }).addOnFailureListener(new OnFailureListener() {
+                                           @Override
+                                           public void onFailure(@NonNull Exception e) {
+                                               Log.e("tag", e.getMessage());
+                                           }
+                                       });
 
                                    }
                                }).addOnFailureListener(new OnFailureListener() {
