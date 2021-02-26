@@ -53,8 +53,8 @@ public class PetDetailsActivity extends AppCompatActivity {
         Intent intent = getIntent();
         String pet_name = intent.getStringExtra("PetName");
         String pet_type = intent.getStringExtra("PetType");
-        ((TextView)findViewById(R.id.lbl_petName)).setText("Pet Name : " + pet_name);
-        ((TextView)findViewById(R.id.lbl_petType)).setText("Pet Type :" + pet_type);
+        ((TextView)findViewById(R.id.lbl_petName)).setText(pet_name);
+
 
         tf_dob = findViewById(R.id.tf_dob);
         tf_breed = findViewById(R.id.tf_breed);
