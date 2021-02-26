@@ -60,8 +60,8 @@ public class ViewMyProfileActivity extends AppCompatActivity {
 
         progressBar = findViewById(R.id.ViewMyProfile_progressBar);
 
-        lbl_updateProfilePic = findViewById(R.id.lbl_updateVetProfilePic);
-        profileImage = findViewById(R.id.imageView_vetProfilePic);
+        lbl_updateProfilePic = findViewById(R.id.lbl_updateMyProfilePic);
+        profileImage = findViewById(R.id.imageView_myProfilePic);
 
         StorageReference profilePicRef = storageReference.child("users/" + fAuth.getCurrentUser().getUid() + "/profilePic.jpg");
         profilePicRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
@@ -96,10 +96,10 @@ public class ViewMyProfileActivity extends AppCompatActivity {
 
         viewMyProfileModel.getMyProfileItem().observe(this, item -> {
 
-            tf_firstName = findViewById(R.id.tf_ViewVetFirstName);
-            tf_lastName = findViewById(R.id.tf_ViewVetLastName);
-            tf_phoneNumber = findViewById(R.id.tf_ViewVetPhoneNumber);
-            tf_state = findViewById(R.id.tf_ViewVetAvailability);
+            tf_firstName = findViewById(R.id.tf_ViewMyFirstName);
+            tf_lastName = findViewById(R.id.tf_ViewMyLastName);
+            tf_phoneNumber = findViewById(R.id.tf_ViewMyPhoneNumber);
+            tf_state = findViewById(R.id.tf_ViewMyState);
 
             Map<String, Object> myProfile;
 
@@ -114,7 +114,7 @@ public class ViewMyProfileActivity extends AppCompatActivity {
         });
 
 
-        btn_update = findViewById(R.id.btn_vetUpdate);
+        btn_update = findViewById(R.id.btn_Update);
         btn_update.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

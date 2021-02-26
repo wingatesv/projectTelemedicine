@@ -18,18 +18,18 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/imageView_vetProfilePic"
+        android:id="@+id/imageView_myProfilePic"
         android:layout_width="118dp"
         android:layout_height="119dp"
         android:layout_marginTop="24dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lbl_vetProfile"
+        app:layout_constraintTop_toBottomOf="@+id/lbl_myProfile"
         app:srcCompat="@drawable/ic_baseline_person_24" />
 
     <TextView
-        android:id="@+id/lbl_vetProfile"
+        android:id="@+id/lbl_myProfile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
@@ -41,7 +41,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/tf_ViewVetFirstName"
+        android:id="@+id/tf_ViewMyFirstName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -50,10 +50,10 @@
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lbl_updateVetProfilePic" />
+        app:layout_constraintTop_toBottomOf="@+id/lbl_updateMyProfilePic" />
 
     <EditText
-        android:id="@+id/tf_ViewVetLastName"
+        android:id="@+id/tf_ViewMyLastName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -62,10 +62,10 @@
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tf_ViewVetFirstName" />
+        app:layout_constraintTop_toBottomOf="@+id/tf_ViewMyFirstName" />
 
     <EditText
-        android:id="@+id/tf_ViewVetPhoneNumber"
+        android:id="@+id/tf_ViewMyPhoneNumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -74,10 +74,10 @@
         android:inputType="phone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tf_ViewVetLastName" />
+        app:layout_constraintTop_toBottomOf="@+id/tf_ViewMyLastName" />
 
     <EditText
-        android:id="@+id/tf_ViewVetAvailability"
+        android:id="@+id/tf_ViewMyState"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -86,10 +86,10 @@
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tf_ViewVetPhoneNumber" />
+        app:layout_constraintTop_toBottomOf="@+id/tf_ViewMyPhoneNumber" />
 
     <Button
-        android:id="@+id/btn_vetUpdate"
+        android:id="@+id/btn_Update"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="Update"
@@ -98,7 +98,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/lbl_updateVetProfilePic"
+        android:id="@+id/lbl_updateMyProfilePic"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
@@ -106,6 +106,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView_vetProfilePic" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView_myProfilePic" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
