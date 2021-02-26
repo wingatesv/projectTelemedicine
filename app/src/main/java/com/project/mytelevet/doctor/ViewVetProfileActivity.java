@@ -1,4 +1,4 @@
-package com.project.mytelevet.customer;
+package com.project.mytelevet.doctor;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -23,18 +24,17 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.project.mytelevet.R;
-import com.project.mytelevet.customer.viewmodel.ViewMyProfileViewModel;
+import com.project.mytelevet.doctor.viewmodel.ViewVetProfileViewModel;
 import com.squareup.picasso.Picasso;
 
 import java.util.Map;
 
-public class ViewMyProfileActivity extends AppCompatActivity {
-
+public class ViewVetProfileActivity extends AppCompatActivity {
     public static final int PICK_IMAGE = 1;
 
     private static Uri imageUri = null;
 
-    EditText tf_firstName, tf_lastName, tf_phoneNumber, tf_state;
+    EditText tf_firstName, tf_lastName, tf_phoneNumber, tf_avail, tf_description;
     ImageView profileImage;
 
     ProgressBar progressBar;
@@ -43,7 +43,7 @@ public class ViewMyProfileActivity extends AppCompatActivity {
 
     Button btn_update;
 
-    ViewMyProfileViewModel viewMyProfileModel;
+    ViewVetProfileViewModel viewVetProfileViewModel;
 
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
@@ -52,18 +52,18 @@ public class ViewMyProfileActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_view_my_profile);
+        setContentView(R.layout.activity_view_vet_profile);
 
         fAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
         storageReference = FirebaseStorage.getInstance().getReference();
 
-        progressBar = findViewById(R.id.ViewMyProfile_progressBar);
+        progressBar = findViewById(R.id.VetProfile_progressBar);
 
-        lbl_updateProfilePic = findViewById(R.id.lbl_updateMyProfilePic);
-        profileImage = findViewById(R.id.imageView_myProfilePic);
+        lbl_updateProfilePic = findViewById(R.id.lbl_updateVetProfilePic);
+        profileImage = findViewById(R.id.imageView_vetProfilePic);
 
-        StorageReference profilePicRef = storageReference.child("users/" + fAuth.getCurrentUser().getUid() + "/profilePic.jpg");
+        StorageReference profilePicRef = storageReference.child("doctors/" + fAuth.getCurrentUser().getUid() + "/profilePic.jpg");
         profilePicRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
             @Override
             public void onSuccess(Uri uri) {
@@ -90,16 +90,17 @@ public class ViewMyProfileActivity extends AppCompatActivity {
         });
 
 
-        viewMyProfileModel = new ViewModelProvider(this, new ViewModelProvider.NewInstanceFactory()).get(ViewMyProfileViewModel.class);
+        viewVetProfileViewModel = new ViewModelProvider(this, new ViewModelProvider.NewInstanceFactory()).get(ViewVetProfileViewModel.class);
 
-        viewMyProfileModel.getViewMyProfileLiveData(fAuth.getCurrentUser().getUid()).observe(this, Observable -> {});
+        viewVetProfileViewModel.getViewVetProfileLiveData(fAuth.getCurrentUser().getUid()).observe(this, Observable -> {});
 
-        viewMyProfileModel.getMyProfileItem().observe(this, item -> {
+        viewVetProfileViewModel.getVetProfileItem().observe(this, item -> {
 
-            tf_firstName = findViewById(R.id.tf_ViewMyFirstName);
-            tf_lastName = findViewById(R.id.tf_ViewMyLastName);
-            tf_phoneNumber = findViewById(R.id.tf_ViewMyPhoneNumber);
-            tf_state = findViewById(R.id.tf_ViewMyState);
+            tf_firstName = findViewById(R.id.tf_ViewVetFirstName);
+            tf_lastName = findViewById(R.id.tf_ViewVetLastName);
+            tf_phoneNumber = findViewById(R.id.tf_ViewVetPhoneNumber);
+            tf_avail = findViewById(R.id.tf_ViewVetAvailability);
+            tf_description = findViewById(R.id.tf_ViewVetDescription);
 
             Map<String, Object> myProfile;
 
@@ -108,13 +109,14 @@ public class ViewMyProfileActivity extends AppCompatActivity {
             tf_firstName.setText(myProfile.get("FirstName").toString());
             tf_lastName.setText(myProfile.get("LastName").toString());
             tf_phoneNumber.setText(myProfile.get("PhoneNumber").toString());
-            tf_state.setText(myProfile.get("State").toString());
+            tf_avail.setText(myProfile.get("Availability").toString());
+            tf_description.setText(myProfile.get("Description").toString());
 
 
         });
 
 
-        btn_update = findViewById(R.id.btn_Update);
+        btn_update = findViewById(R.id.btn_vetUpdate);
         btn_update.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -126,24 +128,25 @@ public class ViewMyProfileActivity extends AppCompatActivity {
                 String update_firstName = tf_firstName.getText().toString();
                 String update_lastName = tf_lastName.getText().toString();
                 String update_phoneNumber = tf_phoneNumber.getText().toString();
-                String update_state = tf_state.getText().toString();
+                String update_avail = tf_avail.getText().toString();
+                String update_description = tf_description.getText().toString();
 
-                if (update_firstName.isEmpty() || update_lastName.isEmpty() || update_phoneNumber.isEmpty() || update_state.isEmpty())
+                if (update_firstName.isEmpty() || update_lastName.isEmpty() || update_phoneNumber.isEmpty() || update_avail.isEmpty() || update_description.isEmpty())
                 {
-                    Toast.makeText(ViewMyProfileActivity.this, "Details are incomplete", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ViewVetProfileActivity.this, "Details are incomplete", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
-                if (viewMyProfileModel.updateData(update_firstName, update_lastName, update_phoneNumber, update_state))
+                if (viewVetProfileViewModel.updateData(update_firstName, update_lastName, update_phoneNumber, update_avail, update_description))
                 {
-                    Toast.makeText(ViewMyProfileActivity.this, "My Profile is updated.", Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(ViewMyProfileActivity.this, MainActivity.class));     // goto main activity
+                    Toast.makeText(ViewVetProfileActivity.this, "Vet Profile is updated.", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(ViewVetProfileActivity.this, VetMainActivity.class));     // goto main activity
                     finish();
                 }
-                    else
-                    {
-                        Log.e("tag", "Unable to update user profile at ViewMyProfileActivity");
-                    }
+                else
+                {
+                    Log.e("tag", "Unable to update user profile at ViewVetProfileActivity");
+                }
 
 
             }
@@ -174,7 +177,7 @@ public class ViewMyProfileActivity extends AppCompatActivity {
     {
         String userID = fAuth.getCurrentUser().getUid();
 
-        StorageReference fileRef = storageReference.child("users/" + userID + "/profilePic.jpg");
+        StorageReference fileRef = storageReference.child("doctors/" + userID + "/profilePic.jpg");
         fileRef.putFile(imageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
@@ -203,5 +206,4 @@ public class ViewMyProfileActivity extends AppCompatActivity {
             }
         });
     }
-
 }

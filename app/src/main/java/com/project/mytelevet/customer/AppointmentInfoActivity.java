@@ -4,18 +4,27 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.project.mytelevet.R;
+import com.project.mytelevet.common.LoginActivity;
+import com.project.mytelevet.common.VideoCallActivity;
 import com.project.mytelevet.customer.viewmodel.AppointmentInfoViewModel;
+import com.project.mytelevet.doctor.ViewVetProfileActivity;
 
 import java.util.Map;
 
 public class AppointmentInfoActivity extends AppCompatActivity {
 
     TextView lbl_vetName, lbl_time, lbl_petName, lbl_reason, lbl_status, lbl_bookingDate;
+    String userID, vetID;
 
     AppointmentInfoViewModel appointmentInfoViewModel;
 
@@ -31,7 +40,7 @@ public class AppointmentInfoActivity extends AppCompatActivity {
         Intent intent = getIntent();
         String vetName = intent.getStringExtra("vetName");
         String time = intent.getStringExtra("time");
-        String userID = firebaseAuth.getCurrentUser().getUid();
+        userID = firebaseAuth.getCurrentUser().getUid();
 
         appointmentInfoViewModel = new ViewModelProvider(this, new ViewModelProvider.NewInstanceFactory()).get(AppointmentInfoViewModel.class);
 
@@ -41,12 +50,12 @@ public class AppointmentInfoActivity extends AppCompatActivity {
 
             appointmentInfoViewModel.getAppointmentItem().observe(this, item -> {
 
-                lbl_vetName = findViewById(R.id.lbl_doctor);
-                lbl_time = findViewById(R.id.lbl_time);
-                lbl_petName = findViewById(R.id.lbl_appointmentPetName);
-                lbl_reason = findViewById(R.id.lbl_appointmentReason);
-                lbl_status = findViewById(R.id.lbl_appointmentStatus);
-                lbl_bookingDate = findViewById(R.id.lbl_bookingDate);
+                lbl_vetName = findViewById(R.id.lbl_vetAppInfoCustomerName);
+                lbl_time = findViewById(R.id.lbl_vetAppInfoTime);
+                lbl_petName = findViewById(R.id.lbl_vetAppInfoPetName);
+                lbl_reason = findViewById(R.id.lbl_vetAppInfoReason);
+                lbl_status = findViewById(R.id.lbl_vetAppInfoStatus);
+                lbl_bookingDate = findViewById(R.id.lbl_vetAppInfoBookingDate);
 
                 Map<String, Object> appItem;
 
@@ -58,6 +67,8 @@ public class AppointmentInfoActivity extends AppCompatActivity {
                 lbl_reason.setText("Appointment Reason : " + appItem.get("Details").toString());
                 lbl_status.setText("Status : " + appItem.get("Status").toString());
                 lbl_bookingDate.setText("Booking Date : " + appItem.get("BookingDate").toString());
+
+                vetID  = appItem.get("VetID").toString();
             });
 
             }
@@ -72,5 +83,32 @@ public class AppointmentInfoActivity extends AppCompatActivity {
 
 
 
+    }
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.app_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle item selection
+        switch (item.getItemId()) {
+            case R.id.appMenu_videoCall:
+                if (vetID!= null )
+                {
+                    Intent intentView = new Intent(this, VideoCallActivity.class);
+                    intentView.putExtra("channelName",  vetID + "_" + userID);
+                    startActivity(intentView);
+                }
+                return true;
+
+
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 }

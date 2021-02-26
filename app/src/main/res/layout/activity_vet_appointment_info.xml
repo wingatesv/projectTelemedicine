@@ -4,8 +4,27 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".customer.AppointmentInfoActivity"
+    tools:context=".doctor.VetAppointmentInfoActivity"
     android:background="#1978a5">
+
+    <Button
+        android:id="@+id/btn_vetAppInfoConfirmApp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/solid_border"
+        android:ems="14"
+        android:letterSpacing="0.1"
+        android:onClick="confirmVetApp"
+        android:text="Confirm Appointment"
+        android:textColor="#1978a5"
+        android:textSize="17sp"
+        android:textStyle="bold"
+        app:backgroundTint="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_vetAppInfoCancelApp" />
 
     <TextView
         android:id="@+id/lbl_vetAppInfo"
@@ -30,7 +49,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:letterSpacing="0.05"
-        android:text="Attending Vet :"
+        android:text="Customer :"
         android:textColor="#CCFFFFFF"
         android:textSize="17sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -114,12 +133,13 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="48dp"
         android:background="@drawable/solid_border"
-        android:text="Cancel Appointment"
         android:ems="14"
+        android:letterSpacing="0.1"
+        android:onClick="cancelVetApp"
+        android:text="Cancel Appointment"
         android:textColor="#1978a5"
         android:textSize="17sp"
         android:textStyle="bold"
-        android:letterSpacing="0.1"
         app:backgroundTint="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -145,6 +165,4 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_appoinment" />
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>

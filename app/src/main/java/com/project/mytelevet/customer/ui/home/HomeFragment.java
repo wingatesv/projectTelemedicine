@@ -31,7 +31,6 @@ public class HomeFragment extends Fragment {
 
     TextView verifyEmail, lbl_username;
 
-    Button btn_findVet;
 
     ListView listView;
 

@@ -17,8 +17,9 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+
     <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/imageView_profilePic"
+        android:id="@+id/imageView_myProfilePic"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginTop="32dp"
@@ -61,7 +62,8 @@
     </TextView>
 
     <EditText
-        android:id="@+id/tf_ViewFirstName"
+
+        android:id="@+id/tf_ViewMyFirstName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
@@ -89,7 +91,7 @@
         app:layout_constraintTop_toBottomOf="@+id/tf_ViewFirstName" />
 
     <EditText
-        android:id="@+id/tf_ViewLastName"
+        android:id="@+id/tf_ViewMyLastName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
@@ -116,7 +118,7 @@
         app:layout_constraintTop_toBottomOf="@+id/tf_ViewLastName" />
 
     <EditText
-        android:id="@+id/tf_ViewPhoneNumber"
+        android:id="@+id/tf_ViewMyPhoneNumber"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
@@ -143,10 +145,10 @@
         android:textColor="#707c80"
         android:textSize="14sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tf_ViewPhoneNumber" />
+        app:layout_constraintTop_toBottomOf="@+id/tf_ViewMyPhoneNumber" />
 
     <EditText
-        android:id="@+id/tf_ViewState"
+        android:id="@+id/tf_ViewMyState"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
@@ -161,7 +163,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView7" />
 
     <Button
-        android:id="@+id/btn_update"
+        android:id="@+id/btn_Update"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="45dp"
@@ -180,7 +182,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/lbl_updateProfilePic"
+        android:id="@+id/lbl_updateMyProfilePic"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -190,7 +192,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView_profilePic" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView_myProfilePic" />
 
 
 

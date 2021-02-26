@@ -59,7 +59,7 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lbl_vetDesciption" />
+        app:layout_constraintTop_toBottomOf="@+id/lbl_vetDescription" />
 
     <EditText
         android:id="@+id/tf_preferredTime"
@@ -146,7 +146,7 @@
 
 
     <TextView
-        android:id="@+id/lbl_vetDesciption"
+        android:id="@+id/lbl_vetDescription"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
