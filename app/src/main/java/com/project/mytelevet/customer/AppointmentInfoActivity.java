@@ -4,20 +4,16 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.project.mytelevet.R;
-import com.project.mytelevet.common.LoginActivity;
 import com.project.mytelevet.common.VideoCallActivity;
 import com.project.mytelevet.customer.viewmodel.AppointmentInfoViewModel;
-import com.project.mytelevet.doctor.ViewVetProfileActivity;
 
 import java.util.Map;
 
@@ -50,12 +46,12 @@ public class AppointmentInfoActivity extends AppCompatActivity {
 
             appointmentInfoViewModel.getAppointmentItem().observe(this, item -> {
 
-                lbl_vetName = findViewById(R.id.lbl_vetAppInfoCustomerName);
-                lbl_time = findViewById(R.id.lbl_vetAppInfoTime);
-                lbl_petName = findViewById(R.id.lbl_vetAppInfoPetName);
-                lbl_reason = findViewById(R.id.lbl_vetAppInfoReason);
-                lbl_status = findViewById(R.id.lbl_vetAppInfoStatus);
-                lbl_bookingDate = findViewById(R.id.lbl_vetAppInfoBookingDate);
+                lbl_vetName = findViewById(R.id.lbl_myAppInfoCustomerName);
+                lbl_time = findViewById(R.id.lbl_myAppInfoTime);
+                lbl_petName = findViewById(R.id.lbl_myAppInfoPetName);
+                lbl_reason = findViewById(R.id.lbl_myAppInfoReason);
+                lbl_status = findViewById(R.id.lbl_myAppInfoStatus);
+                lbl_bookingDate = findViewById(R.id.lbl_myAppInfoBookingDate);
 
                 Map<String, Object> appItem;
 

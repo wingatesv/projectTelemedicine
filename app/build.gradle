@@ -47,7 +47,7 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
     implementation 'com.squareup.picasso:picasso:2.71828'
      //dependency of circuit image view
-    implementation'de.hdodenhof:circleimageview:3.1.0'
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
      //Agora RTC SDK for video call
     implementation 'io.agora.rtc:full-sdk:3.3.0'
 

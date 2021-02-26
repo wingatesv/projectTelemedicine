@@ -19,6 +19,7 @@
 
 
     <de.hdodenhof.circleimageview.CircleImageView
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/imageView_myProfilePic"
         android:layout_width="100dp"
         android:layout_height="100dp"
@@ -49,15 +50,14 @@
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginBottom="16dp"
         android:fontFamily="sans-serif"
         android:letterSpacing="0.1"
         android:text="First Name"
         android:textColor="#707c80"
         android:textSize="14sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lbl_updateProfilePic">
+        app:layout_constraintBottom_toTopOf="@+id/tf_ViewMyFirstName"
+        app:layout_constraintStart_toStartOf="parent">
 
     </TextView>
 
@@ -67,6 +67,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
+        android:layout_marginTop="32dp"
         android:layout_marginEnd="40dp"
         android:inputType="textPersonName"
         android:textColor="#031163"
@@ -74,93 +75,91 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+        app:layout_constraintTop_toBottomOf="@+id/lbl_updateMyProfilePic" />
 
     <TextView
         android:id="@+id/textView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="16dp"
         android:fontFamily="sans-serif"
         android:letterSpacing="0.1"
         android:text="Last Name"
         android:textColor="#707c80"
         android:textSize="14sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tf_ViewFirstName" />
+        app:layout_constraintBottom_toTopOf="@+id/tf_ViewMyLastName"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/tf_ViewMyLastName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
+        android:layout_marginTop="44dp"
         android:layout_marginEnd="40dp"
         android:inputType="textPersonName"
         android:textColor="#031163"
         android:textSize="16dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+        app:layout_constraintTop_toBottomOf="@+id/tf_ViewMyFirstName" />
 
     <TextView
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginBottom="20dp"
         android:fontFamily="sans-serif"
         android:letterSpacing="0.1"
         android:text="Phone Number"
         android:textColor="#707c80"
         android:textSize="14sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tf_ViewLastName" />
+        app:layout_constraintBottom_toTopOf="@+id/tf_ViewMyPhoneNumber"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/tf_ViewMyPhoneNumber"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
+        android:layout_marginTop="104dp"
         android:layout_marginEnd="40dp"
         android:ems="10"
         android:hint="+60XX-XXXXXXXX"
         android:inputType="phone"
-        android:textSize="16dp"
         android:textColor="#031163"
+        android:textSize="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+        app:layout_constraintTop_toBottomOf="@+id/tf_ViewMyLastName" />
 
     <TextView
         android:id="@+id/textView7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="16dp"
-        android:text="State"
+        android:layout_marginStart="60dp"
         android:fontFamily="sans-serif"
         android:letterSpacing="0.1"
+        android:text="State"
         android:textColor="#707c80"
         android:textSize="14sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tf_ViewMyPhoneNumber" />
+        app:layout_constraintBottom_toTopOf="@+id/tf_ViewMyState"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/tf_ViewMyState"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginEnd="40dp"
+        android:layout_marginTop="48dp"
         android:ems="10"
         android:hint="Example: Selangor"
+        android:inputType="textPersonName"
         android:textColor="#031163"
         android:textSize="16dp"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView7" />
+        app:layout_constraintTop_toBottomOf="@+id/tf_ViewMyPhoneNumber"
+        tools:layout_editor_absoluteX="0dp" />
 
     <Button
         android:id="@+id/btn_Update"
