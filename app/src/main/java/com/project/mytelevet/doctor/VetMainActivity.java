@@ -13,7 +13,9 @@ import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.project.mytelevet.R;
+import com.project.mytelevet.common.ContactUsActivity;
 import com.project.mytelevet.common.LoginActivity;
+import com.project.mytelevet.common.TCActivity;
 import com.project.mytelevet.customer.ViewMyProfileActivity;
 
 public class VetMainActivity extends AppCompatActivity {
@@ -43,10 +45,10 @@ public class VetMainActivity extends AppCompatActivity {
                 startActivity(intentView);
                 return true;
             case R.id.menu_tc:
-                Toast.makeText(this, "Menu TC", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(this, TCActivity.class));     // goto t&c activity
                 return true;
             case R.id.menu_contactUs:
-                Toast.makeText(this, "Menu Contact", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(this, ContactUsActivity.class));     // goto contact us activity
                 return true;
             case R.id.menu_logOut:
                 firebaseAuth.signOut();   // logout firebaseUser

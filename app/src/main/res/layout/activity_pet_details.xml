@@ -292,7 +292,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
         android:layout_marginEnd="30dp"
-        android:layout_marginBottom="30dp"
+        android:layout_marginBottom="100dp"
         android:background="@drawable/solid_border"
         android:letterSpacing="0.1"
         android:text="Save"
@@ -300,6 +300,7 @@
         app:backgroundTint="#1fbfb8"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView

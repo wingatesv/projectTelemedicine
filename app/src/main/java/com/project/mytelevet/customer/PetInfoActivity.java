@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.project.mytelevet.R;
@@ -14,6 +15,7 @@ import com.project.mytelevet.R;
 public class PetInfoActivity extends AppCompatActivity {
 
     EditText tf_petName;
+    TextView lbl_dog, lbl_cat;
 
     ImageButton btn_dog, btn_cat;
 
@@ -27,18 +29,24 @@ public class PetInfoActivity extends AppCompatActivity {
         tf_petName = findViewById(R.id.tf_petName);
         btn_dog = findViewById(R.id.btn_dog);
         btn_cat = findViewById(R.id.btn_cat);
+        lbl_dog = findViewById(R.id.lbl_dog);
+        lbl_cat = findViewById(R.id.lbl_cat);
+        lbl_dog.setVisibility(View.INVISIBLE);
+        lbl_cat.setVisibility(View.INVISIBLE);
 
         btn_dog.setOnClickListener(v -> {
 
             pet_type  = "dog";
-            Toast.makeText(this,pet_type, Toast.LENGTH_SHORT).show();
 
+          lbl_dog.setVisibility(View.VISIBLE);
+          lbl_cat.setVisibility(View.INVISIBLE);
         });
 
         btn_cat.setOnClickListener(v ->
         {
             pet_type  = "cat";
-            Toast.makeText(this,pet_type, Toast.LENGTH_SHORT).show();
+            lbl_dog.setVisibility(View.INVISIBLE);
+            lbl_cat.setVisibility(View.VISIBLE);
         });
     }
 

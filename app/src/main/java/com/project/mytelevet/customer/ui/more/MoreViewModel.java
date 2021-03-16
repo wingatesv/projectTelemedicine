@@ -39,7 +39,6 @@ public class MoreViewModel extends ViewModel {
         List<String> list = new ArrayList<>();
         list.add("My Profile");
         list.add("Terms of Service");
-        list.add("Privacy Policy");
         list.add("Contact Us");
         list.add("Log Out");
 

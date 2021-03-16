@@ -274,8 +274,9 @@
             android:elevation="4dp"
             android:gravity="center"
             android:onClick="checkGender"
-            android:textSize="16sp"
+            android:text="Female"
             android:textColor="@drawable/radio_textcolour"
+            android:textSize="16sp"
             android:textStyle="bold" />
 
     </RadioGroup>

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">MyTeleVet</string>
+    <string name="app_name">iPet</string>
     <string name="title_home">Home</string>
     <string name="title_mypets">MyPets</string>
     <string name="title_more">More</string>

@@ -8,7 +8,10 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
@@ -22,9 +25,14 @@ import com.project.mytelevet.R;
 import java.util.HashMap;
 import java.util.Map;
 
-public class MyProfileActivity extends AppCompatActivity {
+public class MyProfileActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
-    EditText tf_firstName, tf_lastName, tf_phoneNumber, tf_State;
+    EditText tf_firstName, tf_lastName, tf_phoneNumber;
+
+    Spinner spinner;
+    private static final String[] paths = {"Johor", "Kedah", "Kelantan", "Malacca", "Negeri Sembilan", "Pahang", "Penang", "Perak", "Perlis", "Sabah"
+    , "Sarawak", "Selangor", "Terengganu"};
+    String state_spinner = "";
 
 
 
@@ -42,7 +50,14 @@ public class MyProfileActivity extends AppCompatActivity {
         tf_firstName = findViewById(R.id.tf_FirstName);
         tf_lastName = findViewById(R.id.tf_LastName);
         tf_phoneNumber = findViewById(R.id.tf_phoneNo);
-        tf_State = findViewById(R.id.tf_State);
+
+        spinner = findViewById(R.id.spinner_state);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(MyProfileActivity.this,
+                android.R.layout.simple_spinner_item,paths);
+
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
+        spinner.setOnItemSelectedListener(this);
 
 
         fAuth = FirebaseAuth.getInstance();
@@ -56,8 +71,14 @@ public class MyProfileActivity extends AppCompatActivity {
         String first_name = tf_firstName.getText().toString().trim();
         String last_name = tf_lastName.getText().toString().trim();
         String phone_no = tf_phoneNumber.getText().toString();
-        String state = tf_State.getText().toString();
 
+
+        if (state_spinner.isEmpty())
+        {
+            Log.e("tag", "State spinner is empty");
+            Toast.makeText(this, "Please select State", Toast.LENGTH_SHORT).show();
+            return;
+        }
 
         if (TextUtils.isEmpty(first_name))
         {
@@ -77,11 +98,6 @@ public class MyProfileActivity extends AppCompatActivity {
             return;
         }
 
-        if (TextUtils.isEmpty(state))
-        {
-            tf_State.setError("First Name is required!");
-            return;
-        }
 
         DocumentReference documentReference1 = fStore.collection("users").document("userList");
         Map<String, Object> userList = new HashMap<>();
@@ -102,7 +118,7 @@ public class MyProfileActivity extends AppCompatActivity {
                 user.put("FirstName", first_name);
                 user.put("LastName", last_name);
                 user.put("PhoneNumber", phone_no);
-                user.put("State", state);
+                user.put("State", state_spinner);
                 user.put("UserID", userID);
                 user.put("FullName", first_name + " " + last_name);
 
@@ -138,4 +154,14 @@ public class MyProfileActivity extends AppCompatActivity {
     }
 
 
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        state_spinner = parent.getItemAtPosition(position).toString();
+        Log.i("tag", state_spinner);
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
+    }
 }

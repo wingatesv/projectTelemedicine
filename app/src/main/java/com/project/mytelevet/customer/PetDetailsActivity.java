@@ -3,18 +3,21 @@ package com.project.mytelevet.customer;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputType;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
-
+import java.util.Calendar;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -29,7 +32,7 @@ import java.util.Map;
 public class PetDetailsActivity extends AppCompatActivity {
 
     EditText tf_dob, tf_breed;
-
+    DatePickerDialog picker;
     RadioGroup rg_gender, rg_size, rg_condition;
 
     Button btn_save;
@@ -57,6 +60,7 @@ public class PetDetailsActivity extends AppCompatActivity {
 
 
         tf_dob = findViewById(R.id.tf_dob);
+        tf_dob.setInputType(InputType.TYPE_NULL);
         tf_breed = findViewById(R.id.tf_breed);
         rg_gender = findViewById(R.id.rb_gender);
         rg_size = findViewById(R.id.rb_size);
@@ -68,12 +72,29 @@ public class PetDetailsActivity extends AppCompatActivity {
         userID = fAuth.getCurrentUser().getUid();
 
 
-
+        tf_dob.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final Calendar cldr = Calendar.getInstance();
+                int day = cldr.get(Calendar.DAY_OF_MONTH);
+                int month = cldr.get(Calendar.MONTH);
+                int year = cldr.get(Calendar.YEAR);
+                // date picker dialog
+                picker = new DatePickerDialog(PetDetailsActivity.this,
+                        new DatePickerDialog.OnDateSetListener() {
+                            @Override
+                            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                                tf_dob.setText(dayOfMonth + "/" + (monthOfYear + 1) + "/" + year);
+                            }
+                        }, year, month, day);
+                picker.show();
+            }
+        });
 
         btn_save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String dob = tf_dob.getText().toString().trim();
+                String dob = tf_dob.getText().toString();
                 String breed = tf_breed.getText().toString().trim();
 
                 if (TextUtils.isEmpty(dob))   // true if email is not written

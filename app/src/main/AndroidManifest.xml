@@ -19,7 +19,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyTeleVet">
-        <activity android:name=".common.VideoCallActivity"></activity>
+        <activity android:name=".common.ContactUsActivity"></activity>
+        <activity android:name=".common.TCActivity" />
+        <activity android:name=".common.VideoCallActivity" />
         <activity android:name=".doctor.ViewCustomerPetProfileActivity" />
         <activity android:name=".doctor.ViewCustomerProfileActivity" />
         <activity android:name=".doctor.VetAppointmentInfoActivity" />

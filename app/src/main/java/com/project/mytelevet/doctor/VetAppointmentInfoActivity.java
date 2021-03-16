@@ -17,6 +17,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.project.mytelevet.R;
+import com.project.mytelevet.customer.MainActivity;
 import com.project.mytelevet.doctor.viewmodel.VetAppointmentInfoViewModel;
 
 import java.util.HashMap;
@@ -157,6 +158,8 @@ public class VetAppointmentInfoActivity extends AppCompatActivity {
                 public void onSuccess(Void aVoid) {
                     Log.i("tag", "Appointment is cancelled");
                     Toast.makeText(getApplicationContext(), "Appointment is cancelled", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(getApplicationContext(), VetMainActivity.class));     // goto main activity
+                    finish();
 
                     // pop up window to type in reason for cancellation and will send to customer
                 }

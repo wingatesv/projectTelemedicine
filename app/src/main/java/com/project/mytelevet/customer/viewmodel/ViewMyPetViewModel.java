@@ -67,7 +67,6 @@ public class ViewMyPetViewModel extends ViewModel {
         List<String> list = new ArrayList<>();
         list.add("General Information");
         list.add("Medical Record");
-        list.add("Appointment Information");
         list.add("Remove This Pet");
 
 
