@@ -55,8 +55,8 @@ public class ViewAppointmentActivity extends AppCompatActivity {
                 adapter.clear();
                 adapter.addAll(item);
 
-                listView = findViewById(R.id.viewAppointment_listView);
-                progressBar = findViewById(R.id.viewAppointment_progressBar);
+                listView = findViewById(R.id.listView_viewVetApp);
+                progressBar = findViewById(R.id.progressBar_viewVetApp);
 
 
                 listView.setAdapter(adapter);

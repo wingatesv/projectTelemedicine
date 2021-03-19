@@ -35,7 +35,7 @@
         android:textColor="#707c80"
         android:textSize="14sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView4">
+        app:layout_constraintTop_toBottomOf="@+id/imageView_logo">
 
     </TextView>
 
@@ -274,8 +274,9 @@
             android:elevation="4dp"
             android:gravity="center"
             android:onClick="checkGender"
-            android:textSize="16sp"
+            android:text="Female"
             android:textColor="@drawable/radio_textcolour"
+            android:textSize="16sp"
             android:textStyle="bold" />
 
     </RadioGroup>
@@ -359,7 +360,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
-        android:id="@+id/imageView4"
+        android:id="@+id/imageView_logo"
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_marginTop="5dp"

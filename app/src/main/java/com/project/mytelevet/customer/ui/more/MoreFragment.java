@@ -1,5 +1,6 @@
 package com.project.mytelevet.customer.ui.more;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -14,8 +15,11 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.project.mytelevet.common.ContactUsActivity;
 import com.project.mytelevet.common.LoginActivity;
 import com.project.mytelevet.R;
+import com.project.mytelevet.common.TCActivity;
+import com.project.mytelevet.customer.MainActivity;
 import com.project.mytelevet.customer.ViewMyProfileActivity;
 
 public class MoreFragment extends Fragment {
@@ -61,6 +65,20 @@ public class MoreFragment extends Fragment {
                         startActivity(intent);
                         getActivity().finish();
                     }
+
+                    if (component.matches("Terms of Service"))
+                    {
+                        startActivity(new Intent(getActivity(), TCActivity.class));     // goto main activity
+
+                    }
+
+                    if (component.matches("Contact Us"))
+                    {
+                        startActivity(new Intent(getActivity(), ContactUsActivity.class));     // goto main activity
+
+                    }
+
+
 
 
                 }

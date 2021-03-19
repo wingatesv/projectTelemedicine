@@ -3,15 +3,18 @@ package com.project.mytelevet.customer;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputType;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
-
+import java.util.Calendar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.project.mytelevet.R;
 import com.project.mytelevet.customer.viewmodel.ViewMyPetViewModel;
@@ -24,7 +27,7 @@ public class ViewMyPetInfoActivity extends AppCompatActivity {
     ViewMyPetViewModel viewMyPetViewModel;
 
     EditText tf_petName, tf_breed, tf_DOB;
-
+    DatePickerDialog picker;
     RadioGroup rg_gender, rg_size, rg_petType, rg_condition;
 
     Button btn_update;
@@ -57,10 +60,30 @@ public class ViewMyPetInfoActivity extends AppCompatActivity {
             tf_petName = findViewById(R.id.tf_ViewPetName);
             tf_breed = findViewById(R.id.tf_ViewBreed);
             tf_DOB = findViewById(R.id.tf_ViewDOB);
+            tf_DOB.setInputType(InputType.TYPE_NULL);
             rg_gender = findViewById(R.id.rg_ViewGender);
             rg_size = findViewById(R.id.rg_ViewSize);
             rg_petType = findViewById(R.id.rg_ViewPetType);
             rg_condition = findViewById(R.id.rg_ViewCondition);
+
+            tf_DOB.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    final Calendar cldr = Calendar.getInstance();
+                    int day = cldr.get(Calendar.DAY_OF_MONTH);
+                    int month = cldr.get(Calendar.MONTH);
+                    int year = cldr.get(Calendar.YEAR);
+                    // date picker dialog
+                    picker = new DatePickerDialog(ViewMyPetInfoActivity.this,
+                            new DatePickerDialog.OnDateSetListener() {
+                                @Override
+                                public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                                    tf_DOB.setText(dayOfMonth + "/" + (monthOfYear + 1) + "/" + year);
+                                }
+                            }, year, month, day);
+                    picker.show();
+                }
+            });
 
 
             Map<String, Object> myPet = new HashMap<>();

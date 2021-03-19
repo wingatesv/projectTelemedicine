@@ -11,8 +11,9 @@
         android:id="@+id/imageView"
         android:layout_width="140dp"
         android:layout_height="140dp"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="24dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/green_circle" />
@@ -21,9 +22,10 @@
         android:id="@+id/vetInfo_profilePic"
         android:layout_width="140dp"
         android:layout_height="140dp"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="24dp"
         android:src="@drawable/ic_person"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -31,7 +33,7 @@
         android:id="@+id/lbl_vetFullName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="32dp"
         android:fontFamily="sans-serif"
         android:gravity="left"
         android:letterSpacing="0.05"
@@ -59,7 +61,17 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lbl_vetDesciption" />
+        app:layout_constraintTop_toBottomOf="@+id/lbl_vetDescription" />
+
+    <TimePicker
+        android:id="@+id/datePicker_time"
+        android:layout_width="278dp"
+        android:layout_height="112dp"
+        android:layout_marginTop="16dp"
+        android:timePickerMode="spinner"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tf_preferredTime" />
 
     <EditText
         android:id="@+id/tf_preferredTime"
@@ -74,7 +86,7 @@
         android:drawableTint="#717171"
         android:ems="14"
         android:fontFamily="sans-serif"
-        android:hint="Preferred Time"
+        android:hint="Preferred Date"
         android:inputType="date|time"
         android:letterSpacing="0.05"
         android:padding="12dp"
@@ -90,15 +102,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="30dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="24dp"
         android:layout_marginRight="30dp"
         android:ems="14"
         android:gravity="center"
         android:textSize="17dp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tf_preferredTime" />
+        app:layout_constraintTop_toBottomOf="@+id/datePicker_time" />
 
     <EditText
         android:id="@+id/tf_reasonAppointment"
@@ -146,7 +159,7 @@
 
 
     <TextView
-        android:id="@+id/lbl_vetDesciption"
+        android:id="@+id/lbl_vetDescription"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
@@ -172,7 +185,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

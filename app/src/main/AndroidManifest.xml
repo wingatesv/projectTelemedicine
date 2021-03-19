@@ -3,6 +3,14 @@
     package="com.project.mytelevet">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 
     <application
         android:allowBackup="true"
@@ -11,7 +19,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyTeleVet">
-        <activity android:name=".doctor.RegisterVetProfile"></activity>
+        <activity android:name=".common.ContactUsActivity"></activity>
+        <activity android:name=".common.TCActivity" />
+        <activity android:name=".common.VideoCallActivity" />
+        <activity android:name=".doctor.ViewCustomerPetProfileActivity" />
+        <activity android:name=".doctor.ViewCustomerProfileActivity" />
+        <activity android:name=".doctor.VetAppointmentInfoActivity" />
+        <activity android:name=".doctor.ViewVetAppointmentActivity" />
+        <activity android:name=".doctor.ViewVetProfileActivity" />
+        <activity android:name=".doctor.VetMainActivity" />
+        <activity android:name=".doctor.RegisterVetProfile" />
         <activity android:name=".customer.AppointmentInfoActivity" />
         <activity android:name=".customer.ViewAppointmentActivity" />
         <activity android:name=".customer.VetInfoActivity" />

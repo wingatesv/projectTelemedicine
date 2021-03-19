@@ -15,12 +15,6 @@ import java.util.Map;
 
 public class VetInfoViewModel extends ViewModel {
 
-    FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
-    FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
-    FirebaseFirestore fStore= FirebaseFirestore.getInstance();
-    StorageReference storageReference = FirebaseStorage.getInstance().getReference();
-
-
 
     private VetInfoRepository repository = new VetInfoRepository();
     VetInfoLiveData liveData = null;

@@ -4,18 +4,22 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputType;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
@@ -42,6 +46,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Calendar;
 
 public class VetInfoActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
@@ -51,8 +56,9 @@ public class VetInfoActivity extends AppCompatActivity implements AdapterView.On
     TextView lbl_vetName, lbl_description, lbl_available;
 
     Spinner spinner;
-
-    EditText tf_reason, tf_time;
+    DatePickerDialog picker_date;
+    TimePicker picker_time;
+    EditText tf_reason, tf_date;
 
     Button btn_bookAppointment;
 
@@ -85,7 +91,11 @@ public class VetInfoActivity extends AppCompatActivity implements AdapterView.On
         setContentView(R.layout.activity_vet_info);
 
         tf_reason = findViewById(R.id.tf_reasonAppointment);
-        tf_time = findViewById(R.id.tf_preferredTime);
+        tf_date = findViewById(R.id.tf_preferredTime);
+        tf_date.setInputType(InputType.TYPE_NULL);
+
+        picker_time = findViewById(R.id.datePicker_time);
+        picker_time.setIs24HourView(true);
 
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseFirestore = FirebaseFirestore.getInstance();
@@ -107,6 +117,25 @@ public class VetInfoActivity extends AppCompatActivity implements AdapterView.On
         SimpleDateFormat df = new SimpleDateFormat("dd-MMM-yyyy", Locale.getDefault());
         currentDate = df.format(c);
 
+        tf_date.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final Calendar cldr = Calendar.getInstance();
+                int day = cldr.get(Calendar.DAY_OF_MONTH);
+                int month = cldr.get(Calendar.MONTH);
+                int year = cldr.get(Calendar.YEAR);
+                // date picker_date dialog
+                picker_date = new DatePickerDialog(VetInfoActivity.this,
+                        new DatePickerDialog.OnDateSetListener() {
+                            @Override
+                            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                                tf_date.setText(dayOfMonth + "/" + (monthOfYear + 1) + "/" + year);
+                            }
+                        }, year, month, day);
+                picker_date.show();
+            }
+        });
+
         vetInfoViewModel = new ViewModelProvider(this, new ViewModelProvider.NewInstanceFactory()).get(VetInfoViewModel.class);
 
         vetInfoViewModel.getVetInfoLiveData(vetName).observe(this, Observable -> {});
@@ -115,7 +144,7 @@ public class VetInfoActivity extends AppCompatActivity implements AdapterView.On
         vetInfoViewModel.getVetInfoItem().observe(this, item -> {
 
            lbl_vetName = findViewById(R.id.lbl_vetFullName);
-           lbl_description = findViewById(R.id.lbl_vetDesciption);
+           lbl_description = findViewById(R.id.lbl_vetDescription);
            vetPic = findViewById(R.id.vetInfo_profilePic);
            progressBar = findViewById(R.id.vetInfo_progressBar);
            lbl_available = findViewById(R.id.lbl_vetAvailability);
@@ -126,6 +155,7 @@ public class VetInfoActivity extends AppCompatActivity implements AdapterView.On
 
             lbl_vetName.setText("Dr. " + vetItem.get("FullName").toString());
             lbl_description.setText(vetItem.get("Description").toString());
+            Log.i("tag",lbl_description.getText().toString());
             lbl_available.setText(vetItem.get("Availability").toString());
 
             if (vetItem.containsKey("VetID") && !vetItem.get("VetID").toString().isEmpty()) {
@@ -138,7 +168,7 @@ public class VetInfoActivity extends AppCompatActivity implements AdapterView.On
 
             if (!vetID.isEmpty())
             {
-                StorageReference petPicRef = storageReference.child("users/" + vetID + "/profilePic.jpg");
+                StorageReference petPicRef = storageReference.child("doctors/" + vetID + "/profilePic.jpg");
 
                 petPicRef.getDownloadUrl().addOnSuccessListener(uri -> {
                     Picasso.get().load(uri).into(vetPic);
@@ -158,7 +188,7 @@ public class VetInfoActivity extends AppCompatActivity implements AdapterView.On
             else
             {
                 //progressBar.setVisibility(View.INVISIBLE);
-                Log.i("tag", "Pet ID is missing in Pet Details");
+                Log.i("tag", "Vet ID is missing in  Details");
             }
 
 
@@ -167,12 +197,14 @@ public class VetInfoActivity extends AppCompatActivity implements AdapterView.On
 
         myPetsViewModel = new ViewModelProvider(this, new ViewModelProvider.NewInstanceFactory()).get(MyPetsViewModel.class);
 
-        viewMyPetViewModel = new ViewModelProvider(this, new ViewModelProvider.NewInstanceFactory()).get(ViewMyPetViewModel.class);
+        //viewMyPetViewModel = new ViewModelProvider(this, new ViewModelProvider.NewInstanceFactory()).get(ViewMyPetViewModel.class);
 
         viewMyProfileModel = new ViewModelProvider(this, new ViewModelProvider.NewInstanceFactory()).get(ViewMyProfileViewModel.class);
 
 
-        ArrayList<MyPetsItem> arrayOfItems = new ArrayList<>();
+
+
+            ArrayList<MyPetsItem> arrayOfItems = new ArrayList<>();
         MyPetsAdapter adapter = new MyPetsAdapter(this, arrayOfItems);
 
 
@@ -240,15 +272,28 @@ public class VetInfoActivity extends AppCompatActivity implements AdapterView.On
                     public void onClick(View v) {
 
                         String reason = tf_reason.getText().toString().trim();
-                        String time = tf_time.getText().toString();
+                        String date = tf_date.getText().toString();
+                        int hour = picker_time.getHour();
+                        int minute = picker_time.getMinute();
+                        String am_pm = "";
+                        if(hour > 12) {
+                            am_pm = "PM";
+                            hour = hour - 12;
+                        }
+                        else
+                        {
+                            am_pm="AM";
+                        }
 
-                        if (reason.isEmpty() || time.isEmpty())
+                        String time = String.valueOf(hour) + ":" + String.valueOf(minute) + am_pm ;
+
+                        if (reason.isEmpty() || date.isEmpty() || time.isEmpty())
                         {
                             Toast.makeText(getApplicationContext(), "Details are incomplete.", Toast.LENGTH_SHORT).show();
                             return;
                         }
 
-                        Log.i("tag", "Nigga pls "  + petName + customerID+ customerName + currentDate);
+                        Log.i("tag", "pls "  + petName + customerID+ customerName + currentDate);
 
                        DocumentReference documentReference = firebaseFirestore.collection("appointments").document();
 
@@ -259,9 +304,11 @@ public class VetInfoActivity extends AppCompatActivity implements AdapterView.On
                        booking.put("PetName", petName);
                        booking.put("Details", reason);
                        booking.put("Status", "pending");
-                       booking.put("AppointmentTime", time);
+                       booking.put("AppointmentTime", date + " " + time);
                        booking.put("VetName", vetName);
                        booking.put("VetID", vetID);
+                       //booking.put("PetID", )
+                       booking.put("AppID", documentReference.getId());
 
                        documentReference.set(booking).addOnSuccessListener(new OnSuccessListener<Void>() {
                            @Override
@@ -270,20 +317,36 @@ public class VetInfoActivity extends AppCompatActivity implements AdapterView.On
                                DocumentReference documentReference1 = firebaseFirestore.collection("users").document(customerID).collection("appointment").document("appointmentList");
 
                                Map<Object, String> receipt = new HashMap<>();
-                               receipt.put(currentDate + "_" + time, vetName + " at " + time);
+                               receipt.put(currentDate + "_" + date + " " + time, vetName + " at " + date + " " + time);
 
                                documentReference1.set(receipt, SetOptions.merge()).addOnSuccessListener(new OnSuccessListener<Void>() {
                                    @Override
                                    public void onSuccess(Void aVoid) {
 
 
-                                       Toast.makeText(getApplicationContext(), "Booking success", Toast.LENGTH_SHORT).show();
+                                       DocumentReference documentReference2 = firebaseFirestore.collection("doctors").document(vetID).collection("appointment").document("appointmentList");
+                                       Map<Object, String> receiptVet = new HashMap<>();
+                                       receiptVet.put(currentDate + "_" + date + " " + time, customerName + " at " + date + " " + time);
+                                       documentReference2.set(receiptVet, SetOptions.merge()).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                           @Override
+                                           public void onSuccess(Void aVoid) {
+                                               Log.i("tag", " Vet appointment List is added ");
 
-                                       Intent intentMain = new Intent(VetInfoActivity.this, ViewAppointmentActivity.class);
-                                       startActivity(intentMain);
+                                               Toast.makeText(getApplicationContext(), "Booking success", Toast.LENGTH_SHORT).show();
 
-                                       finish();
+                                               Intent intentMain = new Intent(VetInfoActivity.this, ViewAppointmentActivity.class);
+                                               startActivity(intentMain);
 
+                                               finish();
+
+
+                                           }
+                                       }).addOnFailureListener(new OnFailureListener() {
+                                           @Override
+                                           public void onFailure(@NonNull Exception e) {
+                                               Log.e("tag", e.getMessage());
+                                           }
+                                       });
 
                                    }
                                }).addOnFailureListener(new OnFailureListener() {
@@ -319,18 +382,6 @@ public class VetInfoActivity extends AppCompatActivity implements AdapterView.On
             }
         });
         //Log.i("tag", petName);
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
