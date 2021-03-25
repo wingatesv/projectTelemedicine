@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".customer.ViewMyPetActivity"
-    android:background="@drawable/greywhite_background">
+    android:background="@drawable/detail_background">
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/imageView_petImage"
@@ -36,14 +36,15 @@
         android:id="@+id/lbl_ViewBreedDOB"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="30dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="40dp"
         android:gravity="center"
-        android:letterSpacing="0.01"
+        android:letterSpacing="0.1"
         android:text="Breed, DOB"
-        android:textColor="#CC1978a5"
+        android:textColor="#1978a5"
         android:textSize="17sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -53,14 +54,15 @@
         android:id="@+id/lbl_ViewGenderConditionSize"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
+        android:layout_marginStart="40dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="30dp"
-        android:letterSpacing="0.01"
-        android:text="Gender-Condition, Size"
+        android:layout_marginEnd="40dp"
         android:gravity="center"
-        android:textColor="#CC1978a5"
+        android:letterSpacing="0.1"
+        android:text="Gender-Condition, Size"
+        android:textColor="#1978a5"
         android:textSize="17sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lbl_ViewBreedDOB" />
@@ -69,12 +71,13 @@
         android:id="@+id/lbl_UpdatePetPic"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:letterSpacing="0.01"
+        android:fontFamily="sans-serif"
+        android:letterSpacing="0.1"
         android:text="Update Image"
         android:textColor="#707c80"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView_petImage" />
 
@@ -92,10 +95,10 @@
         android:id="@+id/listView_MyPet"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="164dp"
+        android:layout_marginTop="360dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView_petImage" />
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

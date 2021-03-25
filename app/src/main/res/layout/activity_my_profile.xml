@@ -34,7 +34,6 @@
         android:textSize="14sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
-
     </TextView>
 
     <EditText
@@ -42,12 +41,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="55dp"
+        android:hint="Example: Erica"
         android:layout_marginEnd="58dp"
         android:fontFamily="sans-serif"
-        android:hint="Example: Erica"
         android:inputType="textPersonName"
         android:letterSpacing="0.05"
-        android:padding="15dp"
+        android:padding="12dp"
         android:textColor="#031163"
         android:textSize="17dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -66,7 +65,7 @@
         android:hint="Example: Lim"
         android:inputType="textPersonName"
         android:letterSpacing="0.05"
-        android:padding="15dp"
+        android:padding="12dp"
         android:textColor="#031163"
         android:textSize="17dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -98,7 +97,7 @@
         android:hint="+60XX-XXXXXXXX"
         android:inputType="phone"
         android:letterSpacing="0.05"
-        android:padding="15dp"
+        android:padding="12dp"
         android:textColor="#031163"
         android:textSize="17dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -128,7 +127,7 @@
         android:ems="13"
         android:letterSpacing="0.1"
         android:onClick="gotoPetInfo"
-        android:padding="14dp"
+        android:padding="10dp"
         android:text="Get Started"
         android:textSize="17sp"
         app:backgroundTint="#1978a5"
@@ -156,10 +155,10 @@
         android:layout_width="0dp"
         android:layout_height="50dp"
         android:layout_marginStart="55dp"
-        android:layout_marginTop="20dp"
         android:layout_marginEnd="58dp"
+        android:padding="12dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.49"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView12" />
 

@@ -21,8 +21,8 @@
     <de.hdodenhof.circleimageview.CircleImageView
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/imageView_myProfilePic"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="140dp"
+        android:layout_height="140dp"
         android:layout_marginTop="24dp"
         android:src="@drawable/ic_baseline_person_24"
         app:layout_constraintEnd_toEndOf="parent"
@@ -34,7 +34,7 @@
         android:id="@+id/lbl_myProfile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="50dp"
         android:fontFamily="sans-serif-medium"
         android:letterSpacing="0.1"
         android:text="Your profile"
@@ -51,32 +51,31 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="16dp"
         android:fontFamily="sans-serif"
         android:letterSpacing="0.1"
         android:text="First Name"
         android:textColor="#707c80"
         android:textSize="14sp"
-        app:layout_constraintBottom_toTopOf="@+id/tf_ViewMyFirstName"
-        app:layout_constraintStart_toStartOf="parent">
-
-    </TextView>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lbl_updateMyProfilePic" />
 
     <EditText
-
         android:id="@+id/tf_ViewMyFirstName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
         android:layout_marginEnd="30dp"
-        android:layout_marginTop="32dp"
+        android:fontFamily="sans-serif"
         android:inputType="textPersonName"
-        android:textColor="#131516"
+        android:letterSpacing="0.05"
+        android:padding="10dp"
+        android:textColor="#031163"
         android:textSize="16dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lbl_updateMyProfilePic" />
-
+        app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
     <TextView
         android:id="@+id/textView5"
@@ -89,8 +88,8 @@
         android:text="Last Name"
         android:textColor="#707c80"
         android:textSize="14sp"
-        app:layout_constraintBottom_toTopOf="@+id/tf_ViewMyLastName"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tf_ViewMyFirstName" />
 
     <EditText
         android:id="@+id/tf_ViewMyLastName"
@@ -99,12 +98,13 @@
         android:layout_marginStart="30dp"
         android:layout_marginEnd="30dp"
         android:inputType="textPersonName"
-        android:textColor="#131516"
+        android:padding="10dp"
+        android:textColor="#031163"
         android:textSize="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tf_ViewMyFirstName" />
+        app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
     <TextView
         android:id="@+id/textView6"
@@ -117,8 +117,8 @@
         android:text="Phone Number"
         android:textColor="#707c80"
         android:textSize="14sp"
-        app:layout_constraintBottom_toTopOf="@+id/tf_ViewMyPhoneNumber"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tf_ViewMyLastName" />
 
     <EditText
         android:id="@+id/tf_ViewMyPhoneNumber"
@@ -126,15 +126,15 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
         android:layout_marginEnd="30dp"
-        android:ems="10"
         android:hint="+60XX-XXXXXXXX"
         android:inputType="phone"
-        android:textColor="#131516"
+        android:padding="10dp"
+        android:textColor="#031163"
         android:textSize="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tf_ViewMyLastName" />
+        app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
     <TextView
         android:id="@+id/textView7"
@@ -142,26 +142,25 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
         android:layout_marginTop="16dp"
-        android:text="State"
         android:fontFamily="sans-serif"
         android:letterSpacing="0.1"
         android:text="State"
         android:textColor="#707c80"
         android:textSize="14sp"
-        app:layout_constraintBottom_toTopOf="@+id/spinner_ViewState"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tf_ViewMyPhoneNumber" />
 
     <Button
         android:id="@+id/btn_Update"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="45dp"
-        android:layout_marginEnd="45dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
         android:layout_marginBottom="30dp"
         android:background="@drawable/solid_border"
         android:ems="13"
         android:letterSpacing="0.1"
-        android:padding="12dp"
+        android:padding="10dp"
         android:text="Update"
         android:textSize="17sp"
         app:backgroundTint="#1978a5"
@@ -178,6 +177,8 @@
         android:text="Update Profile Picture"
         android:textColor="#1978a5"
         android:textSize="14sp"
+        android:fontFamily="sans-serif"
+        android:letterSpacing="0.1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
@@ -187,12 +188,13 @@
         android:id="@+id/spinner_ViewState"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="40dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:textColor="#031163"
+        android:textSize="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tf_ViewMyPhoneNumber" />
+        app:layout_constraintTop_toBottomOf="@+id/textView7" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
