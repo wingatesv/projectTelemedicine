@@ -6,23 +6,25 @@
     android:layout_height="match_parent"
     tools:context=".doctor.ViewCustomerProfileActivity">
 
-    <ImageView
+    <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/imageView_customerProfilePic"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:layout_marginTop="44dp"
+        android:layout_width="140dp"
+        android:layout_height="140dp"
+        android:layout_marginTop="24dp"
+        android:src="@drawable/ic_baseline_person_24"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView31"
         app:srcCompat="@mipmap/ic_launcher" />
 
     <TextView
         android:id="@+id/lbl_customerName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="64dp"
-        android:text="Customer Name :"
+        android:layout_marginTop="50dp"
+        android:letterSpacing="0.05"
+        android:text="Customer Name:"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView_customerProfilePic" />
@@ -31,8 +33,10 @@
         android:id="@+id/lbl_customerPhone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
-        android:text="Phone Number :"
+        android:layout_marginTop="16dp"
+        android:text="Phone Number:"
+        android:letterSpacing="0.05"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lbl_customerName" />
@@ -41,33 +45,66 @@
         android:id="@+id/lbl_customerState"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
-        android:text="State :"
+        android:layout_marginTop="16dp"
+        android:text="State:"
+        android:letterSpacing="0.05"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lbl_customerPhone" />
 
     <Button
         android:id="@+id/btn_call"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="76dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/solid_border"
+        android:ems="13"
+        android:letterSpacing="0.1"
+        android:padding="10dp"
+        android:textSize="17sp"
+        app:backgroundTint="#1978a5"
         android:onClick="call"
         android:text="Call"
+        app:layout_constraintBottom_toTopOf="@+id/btn_videoCall"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lbl_customerState" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/btn_videoCall"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="52dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="30dp"
+        android:background="@drawable/solid_border"
+        android:ems="13"
+        android:letterSpacing="0.1"
         android:onClick="videoCall"
+        android:padding="10dp"
         android:text="Video Call"
+        android:textSize="17sp"
+        app:backgroundTint="#1978a5"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView31"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:fontFamily="sans-serif-medium"
+        android:letterSpacing="0.1"
+        android:text="Contact Customer"
+        android:textColor="#1978a5"
+        android:textSize="24sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_call" />
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

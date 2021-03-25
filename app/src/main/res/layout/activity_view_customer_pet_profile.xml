@@ -8,66 +8,102 @@
 
     <Button
         android:id="@+id/btn_viewCustomerPetMedicalRecord"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/solid_border"
+        android:ems="13"
+        android:letterSpacing="0.1"
+        android:padding="10dp"
         android:text="View Medical Records"
+        android:textSize="17sp"
+        app:backgroundTint="#1978a5"
+        app:layout_constraintBottom_toTopOf="@+id/btn_addCustomerPetMedicalRecord"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView_customerPetProfileImage" />
+        app:layout_constraintHorizontal_bias="0.474"
+        app:layout_constraintStart_toStartOf="parent" />
 
-    <ImageView
+    <Button
+        android:id="@+id/btn_addCustomerPetMedicalRecord"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="30dp"
+        android:background="@drawable/solid_border"
+        android:ems="13"
+        android:letterSpacing="0.1"
+        android:padding="10dp"
+        android:text="Add Medical Records"
+        android:textSize="17sp"
+        app:backgroundTint="#1978a5"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/imageView_customerPetProfileImage"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="56dp"
+        android:layout_width="140dp"
+        android:layout_height="140dp"
+        android:layout_marginTop="24dp"
+        android:src="@drawable/ic_baseline_person_24"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView32"
         app:srcCompat="@mipmap/ic_launcher" />
 
     <TextView
         android:id="@+id/lbl_customerPetName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="56dp"
-        android:layout_marginTop="68dp"
-        android:text="PetName"
+        android:layout_marginTop="50dp"
+        android:letterSpacing="0.05"
+        android:textSize="20sp"
+        android:text="Pet Name:"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageView_customerPetProfileImage"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/lbl_customerPetInfo1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="Info"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageView_customerPetProfileImage"
-        app:layout_constraintTop_toBottomOf="@+id/lbl_customerPetName" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView_customerPetProfileImage" />
 
     <TextView
         android:id="@+id/lbl_customerPetInfo2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="56dp"
         android:layout_marginTop="16dp"
+        android:letterSpacing="0.05"
         android:text="Info"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.476"
-        app:layout_constraintStart_toEndOf="@+id/imageView_customerPetProfileImage"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lbl_customerPetInfo1" />
 
-    <Button
-        android:id="@+id/btn_addCustomerPetMedicalRecord"
+    <TextView
+        android:id="@+id/lbl_customerPetInfo1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
-        android:text="Add Medical Records"
+        android:layout_marginTop="16dp"
+        android:letterSpacing="0.05"
+        android:text="Info"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_viewCustomerPetMedicalRecord" />
+        app:layout_constraintTop_toBottomOf="@+id/lbl_customerPetName" />
+
+    <TextView
+        android:id="@+id/textView32"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:fontFamily="sans-serif-medium"
+        android:letterSpacing="0.1"
+        android:text="Pet Profile"
+        android:textColor="#1978a5"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
